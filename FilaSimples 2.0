@@ -1,0 +1,100 @@
+public class FilaSimples {
+    private int tamanho;
+    private Integer fila[];
+    private Integer filaAuxiliar[];
+
+
+    public FilaSimples(int tamanho) {
+        if (tamanho <= 0) {
+            System.out.println("Tamanho inválido.");
+        } else {
+            this.tamanho = tamanho;
+            this.fila = new Integer[this.tamanho];
+            System.out.println("A fila simples foi criada.");
+        }
+    }
+
+    public void exibirElementos() {
+        for (int i = 0; i < this.tamanho ; i++) {
+            System.out.println(fila[i]);
+        }
+    }
+
+    public void adicionarElemento(Integer valor){
+        if (fila[this.tamanho-1] == null){
+            for (int i = 0; i < this.tamanho; i++) {
+                if (fila[i] == null){
+                    fila[i] = valor;
+                    break;
+                }
+            }
+        } else {
+            System.out.println("CHEIO.!.!.!");
+        }
+        espacosLivres();
+    }
+
+    public void espacosLivres(){
+        int contador = 0;
+        for(int i = 0; i < this.tamanho; i++){
+            if (fila[i] == null){
+                contador++;
+            }
+        }
+        System.out.println("Há " + contador + " espaços livres.");
+    }
+
+
+
+    public boolean existeElemento(Integer elemento) {
+        for (int i = 0; i < this.tamanho ; i++) {
+            if(fila[i] == elemento) {
+                System.out.println("O elemento " + elemento + " está presente na fila e está na posição : " + i);
+                return true;
+            }
+        }
+        System.out.println("O elemento " + elemento + " não está presente na lista.");
+        return false;
+    }
+
+    public void removerElemento(){
+        if (fila[0]==null){
+            System.out.println("A Fila está vazia!");
+        } else if (tamanho > 1){
+            Integer auxiliar;
+            if (fila[this.tamanho-1] == null) {
+                for (int i = 0; i < this.tamanho; i++) {
+                    fila[i] = fila[i + 1];
+                    if (fila[i] == null) {
+                        break;
+                    }
+                }
+            } else {
+                auxiliar = fila[tamanho-1];
+                fila[tamanho-1] = null;
+                for (int i = 0; i < this.tamanho; i++) {
+                    fila[i] = fila[i + 1];
+                    if (fila[i] == null) {
+                        break;
+                    }
+                }
+                fila[tamanho - 2] = auxiliar;
+            }
+        } else {
+            fila[0] = null;
+        }
+    }
+
+    public void removerOcorrencia (Integer ocorrencia){
+        this.filaAuxiliar = new Integer[this.tamanho];
+        for (int j = 0; j < this.tamanho; j++) {
+            filaAuxiliar[j].
+            for (int i = 0; i < this.tamanho; i++) {
+                if (fila[i] == ocorrencia) {
+                    fila[i] = null;
+                }
+            }
+        }
+
+    }
+}
